@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <title>Hello World</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("menubutton", onMenuKeyDown, false);
+        var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+    }
+
+
+
+    // alert dialog dismissed
+        function alertDismissed() {
+            // do something
+        }
+
+
+        function onMenuKeyDown() {
+            navigator.notification.alert(
+                'Você apertou o menu',  // message
+                alertDismissed,         // callback
+                'Game Over',            // title
+                'On'                  // buttonName
+            );
+            }
+
+    // Show a custom alertDismissed
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    </script>
+  </head>
+  <body onload="onLoad()"  >
+    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+    <p id="deviceProperties">Loading device properties...</p>
+    <p><a href="teste.html" >Vai</a></p>
+    <p><a href="geo.html" >Vai</a></p>
+  </body>
+</html>
